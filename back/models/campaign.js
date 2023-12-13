@@ -4,6 +4,7 @@ const products = [
       "name": "Campagne Google ADS 1",
       "Budget": 1849,
       "Date de debut" : "03/09/2023",
+      "Date de fin" : "02/10/2023",
       "description": "Campagne Google ADS positionne sur notre nom de domaine",
       "altTxt": "Campagne Google ADS"
     },
@@ -12,6 +13,7 @@ const products = [
       "name": "Campagne Google ADS 2",
       "Budget": 4499,
       "Date de debut" : "01/07/2023",
+      "Date de fin" : "22/07/2023",
       "description": "Campagne positionnée sur notre mot clé principal",
       "altTxt": "Campagne Google ADS"
     },
@@ -20,6 +22,7 @@ const products = [
       "name": "Campange Facebook ADS",
       "Budget": 3199,
       "Date de debut" : "09/08/2023",
+      "Date de fin" : "22/10/2023",
       "description": "Campagne outbound sur facebook ADS",
       "altTxt": "Campagne Facebook ADS"
     },
@@ -28,6 +31,7 @@ const products = [
       "name": "Campagne Pinterest ADS",
       "Budget": 1499,
       "Date de debut" : "29/10/2023",
+      "Date de fin" : "22/11/2023",
       "description": "Positionnement sur nos produits sur pinterest",
       "altTxt": "Campagne Pinterest"
     },
@@ -36,19 +40,20 @@ const products = [
       "name": "Campagne Google ADS positionnée en retargeting",
       "Budget": 2249,
       "Date de debut" : "12/10/2023",
+      "Date de fin" : "22/10/2023",
       "description": "On a lance une campagne Google ADS de retargeting pour voir si on pouvait augmenter notre ROI",
       "altTxt": "Campagne Google ADS"
     },
   ];
   
   exports.find = () => {
-    return new Promise((resolve, reject) => resolve(JSON.parse(JSON.stringify(products))));
+    return new Promise((resolve, reject) => resolve(JSON.parse(JSON.stringify(campaigns))));
   }
   
   exports.findById = (id) => {
     return new Promise((resolve, reject) =>
-      resolve(JSON.parse(JSON.stringify(products)).find(product =>
-        product._id == id)
+      resolve(JSON.parse(JSON.stringify(campaigns)).find(campaign =>
+        campaign._id == id)
       )
     );
   }

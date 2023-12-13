@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const port = 3000;
 // Données fictives pour les campagnes
 const campaigns = [
     {
@@ -19,10 +18,7 @@ const campaigns = [
     }
 ];
 // Endpoint pour récupérer toutes les campagnes
-app.get('/api/campaigns', (req, res) => {
+app.get('/', (req, res) => {
+    console.log("zdzede")
     res.json(campaigns);
-});
-// Démarrer le serveur
-app.listen(port, () => {
-    console.log(`Serveur démarré sur http://localhost:${port}`);
 });
