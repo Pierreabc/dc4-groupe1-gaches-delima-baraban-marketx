@@ -1,24 +1,21 @@
 const express = require('express');
+const path = require('path');
+
+const campaignRoutes = require('./routes/campaign');
+
 const app = express();
-// Données fictives pour les campagnes
-const campaigns = [
-    {
-        nom: "Campagne A",
-        description: "Description de la Campagne A",
-        dateDebut: "2023-01-01",
-        dateFin: "2023-12-31",
-        budget: 10000
-    },
-    {
-        nom: "Campagne B",
-        description: "Description de la Campagne B",
-        dateDebut: "2023-02-01",
-        dateFin: "2023-08-31",
-        budget: 20000
-    }
-];
-// Endpoint pour récupérer toutes les campagnes
-app.get('/', (req, res) => {
-    console.log("zdzede")
-    res.json(campaigns);
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+  next();
 });
+
+
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+
+app.use('/api/campaigns', campaignRoutes);
+
+module.exports = app;

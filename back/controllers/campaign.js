@@ -1,11 +1,11 @@
-const uuid = require('uuid/v1');
+
 const Campaign = require('../models/campaign');
 
-exports.getAllProducts = (req, res, next) => {
+exports.getAllCampaigns = (req, res, next) => {
   Campaign.find().then(
-    (campaign) => {
+    (Campaigns) => {
       const mappedCampaigns = products.map((campaign) => {
-        return product;
+        return campaign;
       });
       res.status(200).json(mappedCampaigns);
     }
@@ -16,11 +16,11 @@ exports.getAllProducts = (req, res, next) => {
   );
 };
 
-exports.getOneProduct = (req, res, next) => {
-  Product.findById(req.params.id).then(
-    (product) => {
-      if (!product) {
-        return res.status(404).send(new Error('Product not found!'));
+exports.getOneCampaign = (req, res, next) => {
+  Campaign.findById(req.params.id).then(
+    (campaign) => {
+      if (!campaign) {
+        return res.status(404).send(new Error('Campagne non trouvée'));
       }
       res.status(200).json(product);
     }
@@ -44,36 +44,36 @@ exports.getOneProduct = (req, res, next) => {
  * products: [string] <-- array of product _id
  *
  */
-  let queries = [];
-  for (let productId of req.body.products) {
-    const queryPromise = new Promise((resolve, reject) => {
-      Product.findById(productId).then(
-        (product) => {
-          if (!product) {
-            reject('Product not found: ' + productId);
-          }
+//   let queries = [];
+//   for (let campaignId of req.body.campaigns) {
+//     const queryPromise = new Promise((resolve, reject) => {
+//       Campaign.findById(campaignId).then(
+//         (campaign) => {
+//           if (!campaign) {
+//             reject('Product not found: ' + campaignId);
+//           }
 
-        }
-      ).catch(
-        () => {
-          reject('Database error!');
-        }
-      )
-    });
-    queries.push(queryPromise);
-  }
-  Promise.all(queries).then(
-    (products) => {
-      const orderId = uuid();
-      return res.status(201).json({
-        contact: req.body.contact,
-        products: products,
-        orderId: orderId
-      })
-    }
-  ).catch(
-    (error) => {
-      return res.status(500).json(new Error(error));
-    }
-  );
-;
+//         }
+//       ).catch(
+//         () => {
+//           reject('Database error!');
+//         }
+//       )
+//     });
+//     queries.push(queryPromise);
+//   }
+//   Promise.all(queries).then(
+//     (products) => {
+//       const orderId = uuid();
+//       return res.status(201).json({
+//         contact: req.body.contact,
+//         products: products,
+//         orderId: orderId
+//       })
+//     }
+//   ).catch(
+//     (error) => {
+//       return res.status(500).json(new Error(error));
+//     }
+//   );
+// ;

@@ -1,11 +1,11 @@
-//Nous déclarons la constante servant à récupérer l'élément HTML ayant pour ID #item 
+///Nous déclarons la constante servant à récupérer l'élément HTML ayant pour ID #item 
 const items = (document.getElementById('items'))
 
 /* Nous initialisons la fonction fetchProduct, fonction asynchrone servant à récupérer les données présentes 
 dans l'API, puis à les convertir au format Javascript 
   Les données au format Javascript sont ensuite stockées dans la variable meubleData*/
 const fetchProduct = async () => {
-  await fetch('http://localhost:3000/')
+  await fetch('http://localhost:3000/api/campaigns')
     .then((response) => response.json())
     .then((response) => { 
         console.log(response)
